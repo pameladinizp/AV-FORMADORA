@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="isLoginMode">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="submit" class="ion-margin-top">Login</ion-button>
+      <ion-text>
+        <p>
+          Não tem uma conta? <a (click)="toggleMode()">Cadastre-se</a>
+        </p>
+      </ion-text>
+    </form>
+  </div>
+
+  <div *ngIf="!isLoginMode">
+    <h2>Cadastro</h2>
+    <form (ngSubmit)="onRegister()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="registerData.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="registerData.email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="registerData.password" name="password" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmar Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="registerData.confirmPassword" name="confirmPassword" required></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="submit" class="ion-margin-top">Cadastrar</ion-button>
+      <ion-text>
+        <p>
+          Já tem uma conta? <a (click)="toggleMode()">Login</a>
+        </p>
+      </ion-text>
+    </form>
+  </div>
+
+  <!-- Botões de navegação -->
+  <div class="ion-margin-top">
+    <ion-button expand="full" [routerLink]="['/page1']">Notícias</ion-button>
+    <ion-button expand="full" [routerLink]="['/home']">Home</ion-button>
+  </div>
+</ion-content>
